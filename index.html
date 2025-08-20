@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teodora Asistente IA</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Avatar Negro.png" />
+
+  <style>
+    body.day {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    body.night {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: background-color 0.5s, color 0.5s, opacity 1.2s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .logo-container {
+      padding: 12px 24px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      display: inline-block;
+      transition: background-color 0.5s ease-in-out;
+    }
+
+    .logo-container img {
+      width: clamp(300px, 35vw, 340px);
+      height: auto;
+    }
+
+    body.night .logo-container img {
+      filter: invert(1);
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 0 0 10px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      max-width: 600px;
+      text-align: center;
+      margin: 0 0 30px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      .logo-container img {
+        width: clamp(300px, 80vw, 340px);
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hour = new Date().getHours();
+      const isDay = hour >= 6 && hour < 18;
+      document.body.classList.add(isDay ? 'day' : 'night');
+
+      setTimeout(() => {
+        document.body.classList.add('loaded');
+      }, 100);
+    });
+  </script>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="Logo Teodora negro.png" alt="Logo Teodora" />
+  </div>
+
+  <h2>Teodora Asistente IA</h2>
+  <h2>Teodora Asistente IA</h2>
+  <p>
+    Conoce los productos que importamos y distribuimos en Venezuela, solicita información y recomendaciones de armonías gastronómicas y más. Escribe en la casilla de abajo o pulsa el botón del micrófono para dictar tu pregunta y conversar.
+  </p>
+
+  <!-- Botpress Web Chat -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/09/14/20250809145408-WCLMFFDL.js" defer></script>
+</body>
+</html>
