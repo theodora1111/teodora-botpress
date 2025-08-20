@@ -69,12 +69,15 @@
       body {
         padding: 15px;
       }
+
       .logo-container img {
         width: clamp(300px, 80vw, 340px);
       }
+
       h2 {
         font-size: 1.5rem;
       }
+
       p {
         font-size: 0.9rem;
       }
@@ -92,6 +95,23 @@
       }, 100);
     });
   </script>
+
+  <!-- In your <head> tag -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+  <style>
+    #webchat .bpWebchat {
+      position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 350px;
+    height: 500px;
+    z-index: 9999;
+    }
+
+    #webchat .bpFab {
+      display: none;
+    }
+  </style>
 </head>
 <body>
   <div class="logo-container">
@@ -100,8 +120,48 @@
 
   <h2>Teodora Asistente IA</h2>
   <p>
-    Conoce los productos que importamos y distribuimos en Venezuela, 
-    solicita información y recomendaciones de armonías gastronómicas y más. 
+    Conoce los productos que importamos y distribuimos en Venezuela,
+    solicita información y recomendaciones de armonías gastronómicas y más.
     Escribe en la casilla de abajo o pulsa el botón del micrófono para dictar tu pregunta y conversar.
   </p>
 
+  <!-- Put this on your page BEFORE the script below -->
+  <div id="webchat" style="width: 500px; height: 500px;"></div>
+
+  <!-- In your <body> tag -->
+  <script>
+    window.botpress.on("webchat:ready", () => {
+      window.botpress.open();
+    });
+    window.botpress.init({
+      botId: "6fd92ba5-cd83-4898-b19f-11f0ad2899b6",
+      configuration: {
+        version: "v1",
+        composerPlaceholder: "Pregunta aquí",
+        botName: "Teodora Asistente IA",
+        botAvatar:
+          "https://files.bpcontent.cloud/2025/08/15/03/20250815034700-9B8XC9OM.png",
+        botDescription:
+          "Conoce los productos que importamos y distribuimos en Venezuela. Solicita información y recomendaciones de armonías gastronómicas y más. Escribe en la casilla de abajo o pulsa el botón del micrófono para dictar tu pregunta y conversar.",
+        fabImage:
+          "https://files.bpcontent.cloud/2025/08/20/01/20250820015942-GN0NMJIH.png",
+        website: { title: "", link: "" },
+        email: { title: "inv.theodora1111@gmail.com", link: "inv.theodora1111@gmail.com" },
+        phone: { title: "+584120358467", link: "+584120358467" },
+        termsOfService: {},
+        privacyPolicy: {},
+        color: "#000000",
+        variant: "solid",
+        headerVariant: "glass",
+        themeMode: "light",
+        fontFamily: "inter",
+        radius: 1.5,
+        feedbackEnabled: true,
+        storageLocation: "localStorage"
+      },
+      clientId: "ab8d4ab9-c8aa-4a5d-8bb1-2ae81b7963c4",
+      selector: "#webchat"
+    });
+  </script>
+</body>
+</html>
