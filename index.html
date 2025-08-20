@@ -6,7 +6,7 @@
   <title>Teodora Asistente IA</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="AvatarNegro.png" />
+  <link rel="icon" type="image/png" href="Avatar Negro.png" />
 
   <style>
     body.day {
@@ -79,16 +79,6 @@
         font-size: 0.9rem;
       }
     }
-
-    /* Opcional: ajusta tamaño y posición del contenedor del chat */
-    #webchat {
-      width: 350px;
-      height: 500px;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-    }
   </style>
 
   <script>
@@ -102,24 +92,21 @@
       }, 100);
     });
   </script>
-
-  <!-- Botpress Webchat -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
-  <script src="https://files.bpcontent.cloud/2025/08/09/14/20250809145408-WCLMFFDL.js" defer></script>
 </head>
 <body>
   <div class="logo-container">
     <img src="Logo Teodora negro.png" alt="Logo Teodora" />
   </div>
 
+  <h2>Theodora Asistente IA</h2>
   <h2>Teodora Asistente IA</h2>
   <p>
-    Conoce los productos que importamos y distribuimos en Venezuela,
-    solicita información y recomendaciones de armonías gastronómicas y más.
-    Escribe en la casilla de abajo o pulsa el botón del micrófono para dictar tu pregunta y conversar.
+    Conoce los productos que importamos y distribuimos en Venezuela, solicita recomendaciones de armonías gastronómicas
+    y más. Pulsa abajo el botón de Chat o selecciona alguna de las preguntas rápidas.
   </p>
 
-  <!-- Contenedor donde se renderiza el chatbot -->
-  <div id="webchat"></div>
+  <!-- Botpress Web Chat -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/09/14/20250809145408-WCLMFFDL.js" defer></script>
 </body>
 </html>
