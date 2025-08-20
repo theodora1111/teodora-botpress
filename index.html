@@ -81,11 +81,37 @@
     }
   </style>
 
+  <!-- Botpress Webchat inject + overrides -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+  <style>
+    /* Ajusta el tamaño del webchat al contenedor #webchat */
+    #webchat .bpWebchat {
+      position: relative !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      top: auto !important;
+      left: auto !important;
+    }
+
+    /* Oculta el botón flotante de Botpress */
+    #webchat .bpFab {
+      display: none !important;
+    }
+
+    /* Elimina el footer “⚡ by Botpress” */
+    #webchat .bp-ui-footer {
+      display: none !important;
+    }
+  </style>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const hour = new Date().getHours();
       const isDay = hour >= 6 && hour < 18;
       document.body.classList.add(isDay ? 'day' : 'night');
+
       setTimeout(() => {
         document.body.classList.add('loaded');
       }, 100);
@@ -104,35 +130,51 @@
     Escribe en la casilla de abajo o pulsa el botón del micrófono para dictar tu pregunta y conversar.
   </p>
 
-  <!-- 1) Configuración de quick replies vía JSON -->
-  <script>
-    window.botpressWebChat = {
-      conversationStarters: {
-        text: '¿En qué puedo ayudarte?',
-        quick_replies: [
-          {
-            title: '¿Qué marcas distribuyen y dónde las encuentro?',
-            payload: 'marcas_distribuidas'
-          },
-          {
-            title: 'Recomiéndame vinos para acompañar carnes o pastas',
-            payload: 'recomendar_vinos'
-          },
-          {
-            title: '¿Qué hace especial al agua mineral Solán de Cabras?',
-            payload: 'info_solan_cabras'
-          },
-          {
-            title: '¿Cómo los contacto?',
-            payload: 'contacto'
-          }
-        ]
-      }
-    };
-  </script>
+  <!-- Contenedor del chatbot -->
+  <div
+    id="webchat"
+    style="width: 100%; max-width: 500px; height: 500px; margin-top: 20px;"
+  ></div>
 
-  <!-- 2) Scripts de Botpress Webchat (sin defer) -->
-  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
-  <script src="https://files.bpcontent.cloud/2025/08/09/14/20250809145408-WCLMFFDL.js"></script>
+  <!-- Inicialización de Botpress Webchat -->
+  <script>
+    window.botpress.on('webchat:ready', () => {
+      window.botpress.open();
+    });
+
+    window.botpress.init({
+      botId: '6fd92ba5-cd83-4898-b19f-11f0ad2899b6',
+      clientId: 'ab8d4ab9-c8aa-4a5d-8bb1-2ae81b7963c4',
+      selector: '#webchat',
+      configuration: {
+        version: 'v1',
+        composerPlaceholder: 'Pregunta aquí',
+        botName: 'Teodora Asistente IA',
+        botAvatar:
+          'https://files.bpcontent.cloud/2025/08/15/03/20250815034700-9B8XC9OM.png',
+        botDescription:
+          'Conoce los productos que importamos y distribuimos en Venezuela. Solicita información y recomendaciones de armonías gastronómicas y más. Escribe en la casilla de abajo o pulsa el micrófono para dictar tu pregunta y conversar.',
+        fabImage:
+          'https://files.bpcontent.cloud/2025/08/20/01/20250820015942-GN0NMJIH.png',
+        website: { title: '', link: '' },
+        email: {
+          title: 'inv.theodora1111@gmail.com',
+          link: 'inv.theodora1111@gmail.com'
+        },
+        phone: { title: '+584120358467', link: '+584120358467' },
+        termsOfService: {},
+        privacyPolicy: {},
+        color: '#000000',
+        variant: 'solid',
+        headerVariant: 'glass',
+        themeMode: 'light',
+        fontFamily: 'inter',
+        radius: 1.5,
+        feedbackEnabled: true,
+        storageLocation: 'localStorage'
+        // footer ha sido eliminado
+      }
+    });
+  </script>
 </body>
 </html>
