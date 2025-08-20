@@ -100,11 +100,48 @@
 
   <h2>Teodora Asistente IA</h2>
   <p>
-    Conoce los productos que importamos y distribuimos en Venezuela, 
-    solicita información y recomendaciones de armonías gastronómicas y más. 
+    Conoce los productos que importamos y distribuimos en Venezuela,  
+    solicita información y recomendaciones de armonías gastronómicas y más.  
     Escribe en la casilla de abajo o pulsa el botón del micrófono para dictar tu pregunta y conversar.
   </p>
 
+  <!-- Botpress Web Chat -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/08/09/14/20250809145408-WCLMFFDL.js" defer></script>
+
+  <!-- Evento proactivo con 4 preguntas rápidas -->
+  <script>
+    window.addEventListener('botpress-webchat:ready', () => {
+      window.botpressWebChat.sendEvent({
+        type: 'proactive-trigger',
+        channel: 'web',
+        target: 'bot',
+        payload: {
+          text: '¿Cómo puedo ayudarte?',
+          quick_replies: [
+            {
+              title: '¿Qué marcas distribuyen y dónde las encuentro?',
+              payload: 'marcas_distribuidas'
+            },
+            {
+              title: 'Recomiéndame vinos para acompañar carnes o pastas',
+              payload: 'recomendar_vinos'
+            },
+            {
+              title: '¿Qué hace especial al agua mineral Solán de Cabras?',
+              payload: 'info_solan_cabras'
+            },
+            {
+              title: '¿Cómo los contacto?',
+              payload: 'contacto'
+            }
+          ]
+        }
+      });
+    });
+  </script>
+</body>
+</html>
   <!-- Botpress Web Chat -->
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
   <script src="https://files.bpcontent.cloud/2025/08/09/14/20250809145408-WCLMFFDL.js" defer></script>
