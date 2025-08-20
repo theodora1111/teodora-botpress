@@ -79,6 +79,32 @@
         font-size: 0.9rem;
       }
     }
+
+    /* ===== Estilos para el CTA junto al chatbot ===== */
+    .chat-cta {
+      position: fixed;
+      bottom: 25px;       /* Ajusta según altura del launcher */
+      right: 90px;        /* Separación horizontal del launcher */
+      font-weight: bold;
+      font-size: 1rem;
+      color: #007bff;     /* Color llamativo, cambia al gusto */
+      cursor: pointer;
+      z-index: 9999;
+      white-space: nowrap;
+    }
+
+    /* Si quieres que también rebote el CTA */
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40%                      { transform: translateY(-10px); }
+      60%                      { transform: translateY(-5px); }
+    }
+
+    .chat-cta,
+    .bp-webchat-launcher {
+      animation: bounce 2s infinite;
+      animation-delay: 1s;
+    }
   </style>
 
   <script>
@@ -100,9 +126,15 @@
 
   <h2>Teodora Asistente IA</h2>
   <p>
-    Conoce los productos que importamos y distribuimos en Venezuela, solicita recomendaciones de armonías gastronómicas
-    y más. Pulsa abajo el botón de Chat T11 para iniciar una conversación.
+    Conoce los productos que importamos y distribuimos en Venezuela, solicita
+    recomendaciones de armonías gastronómicas y más. Pulsa abajo el botón de
+    Chat T11 para iniciar una conversación.
   </p>
+
+  <!-- Texto CTA junto al launcher -->
+  <div class="chat-cta" onclick="document.querySelector('.bp-webchat-launcher').click()">
+    CLICK AQUÍ →
+  </div>
 
   <!-- Botpress Web Chat -->
   <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
